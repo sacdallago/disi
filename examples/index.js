@@ -1,39 +1,64 @@
 const Disi = require('../build/disi.js');
 
 let n_of_vectors = 2;
-let vector_length = 10;
+let vector_length = 100;
 
-let vectors = [];
+let distance = [];
+let similarity = [];
 
 for(let i=0; i<n_of_vectors; i++){
-    let v = [];
+    let d = [];
+    let s = [];
 
     for(let j=0; j<vector_length; j++){
-        v.push(parseInt(Math.random()*10));
+        let t = parseInt(Math.random()*10);
+        d.push(t);
+        s.push(t%2 ? 1 : 0);
     }
 
-    vectors.push(v);
+    distance.push(d);
+    similarity.push(s);
 }
 
 for(let i=0; i<n_of_vectors; i++){
     for(let j=i+1; j<n_of_vectors; j++){
-        let A = vectors[i];
-        let B = vectors[j];
+        let Ad = distance[i];
+        let Bd = distance[j];
         console.log("-----------------------------------");
-        console.log("Vector " + i + ": "    + JSON.stringify(A));
+        console.log("Vector " + i + ": "    + JSON.stringify(Ad));
         console.log();
-        console.log("Vector " + j + ": "    + JSON.stringify(B));
+        console.log("Vector " + j + ": "    + JSON.stringify(Bd));
         console.log("-----------------------------------");
         console.log();
-
         console.log("Distances:");
-        console.log("\tManhattan: "   + Disi.manhattan(A, B));
-        console.log("\tMikowski r=1: "+ Disi.mikowski(A, B, 1));
-        console.log("\tEuclidian: "   + Disi.euclidian(A, B));
-        console.log("\tMikowski r=2: "+ Disi.mikowski(A, B, 2));
-        console.log("\tSupremum: "    + Disi.supremum(A, B));
-        console.log("\tMikowski r=infinity: "+ Disi.mikowski(A, B, Infinity));
+        console.log("\tManhattan: "   + Disi.manhattan(Ad, Bd));
+        console.log("\tMinkowski r=1: "+ Disi.minkowski(Ad, Bd, 1));
+        console.log("\tEuclidian: "   + Disi.euclidian(Ad, Bd));
+        console.log("\tMinkowski r=2: "+ Disi.minkowski(Ad, Bd, 2));
+        console.log("\tSupremum: "    + Disi.supremum(Ad, Bd));
+        console.log("\tMinkowski r=infinity: "+ Disi.minkowski(Ad, Bd, Infinity));
         console.log();
+        console.log("Special:");
+        console.log("\tChi-Squared: "   + Disi.chi(Ad, Bd));
+        console.log("\tPerson: "   + Disi.person(Ad, Bd));
+        console.log("\n\n");
+
+        let As = similarity[i];
+        let Bs = similarity[j];
+        console.log("-----------------------------------");
+        console.log("Vector " + i + ": "    + JSON.stringify(As));
+        console.log();
+        console.log("Vector " + j + ": "    + JSON.stringify(Bs));
+        console.log("-----------------------------------");
+        console.log();
+        console.log("Similarity:");
+        console.log("\tSimple Matching: "   + Disi.smc(As, Bs));
+        console.log("\tJaccard Coefficients: "   + Disi.jc(As, Bs));
+        console.log("\tExtended Jaccard Coefficients: "   + Disi.ejc(As, Bs));
+        console.log("Special:");
+        console.log("\tChi-Squared: "   + Disi.chi(As, Bs));
+        console.log("\tPerson: "   + Disi.person(As, Bs));
+        console.log("\n\n");
     }
 }
 
