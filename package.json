@@ -1,0 +1,44 @@
+{
+    "name": "DiSi",
+    "description": "A collection of distance and similarity metrics written in pure JS",
+    "version": "0.1.0",
+    "homepage": "https://github.com/sacdallago/disi",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sacdallago/disi.git"
+    },
+    "author": {
+        "name": "Christian Dallago",
+        "email": "code@dallago.us"
+    },
+    "license": "GPL-3.0",
+    "dependencies": {},
+    "devDependencies": {
+        "browserify": "latest",
+        "watchify": "latest",
+        "jshint": "latest",
+        "webpack": "latest"
+    },
+    "keywords": [
+        "distance",
+        "siilarity",
+        "metric",
+        "person",
+        "euclidian",
+        "manhattan",
+        "supermis"
+    ],
+    "main": "build/disi.js",
+    "scripts": {
+        "build": "webpack",
+        "watch": "webpack --progress --colors --watch",
+        "lint": "jshint -c .jshintrc lib --verbose",
+        "install": "webpack"
+    },
+    "contributors": [
+        "Christian Dallago <code@dallago.us> (https://github.com/sacdallago)"
+    ],
+    "bugs": {
+        "url": "https://github.com/sacdallago/disi/issues"
+    }
+}
