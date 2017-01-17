@@ -33,7 +33,7 @@
         "build": "webpack",
         "watch": "webpack --progress --colors --watch",
         "lint": "jshint -c .jshintrc lib --verbose",
-        "install": "webpack"
+        "prepublish": "webpack"
     },
     "contributors": [
         "Christian Dallago <code@dallago.us> (https://github.com/sacdallago)"
