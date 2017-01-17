@@ -5,6 +5,80 @@
     <title>Web usage example</title>
 </head>
 <body>
+    <h1>Examples</h1>
+    <div id="container"></div>
+    <script src="../build/disi.js"></script>
+    <script>
+    function createElement(text) {
+        let root = document.getElementById("container");
 
+        let current = document.createElement("div");
+        current.innerText = text;
+
+        root.appendChild(current);
+    }
+
+    let n_of_vectors = 2;
+    let vector_length = 100;
+
+    let distance = [];
+    let similarity = [];
+
+    for(let i=0; i<n_of_vectors; i++){
+        let d = [];
+        let s = [];
+
+        for(let j=0; j<vector_length; j++){
+            let t = parseInt(Math.random()*10);
+            d.push(t);
+            s.push(t%2 ? 1 : 0);
+        }
+
+        distance.push(d);
+        similarity.push(s);
+    }
+
+    for(let i=0; i<n_of_vectors; i++){
+        for(let j=i+1; j<n_of_vectors; j++){
+            let Ad = distance[i];
+            let Bd = distance[j];
+            createElement("-----------------------------------");
+            createElement("Vector " + i + ": "    + JSON.stringify(Ad));
+            createElement("");
+            createElement("Vector " + j + ": "    + JSON.stringify(Bd));
+            createElement("-----------------------------------");
+            createElement("");
+            createElement("Distances:");
+            createElement("\tManhattan: "   + Disi.manhattan(Ad, Bd));
+            createElement("\tMinkowski r=1: "+ Disi.minkowski(Ad, Bd, 1));
+            createElement("\tEuclidian: "   + Disi.euclidian(Ad, Bd));
+            createElement("\tMinkowski r=2: "+ Disi.minkowski(Ad, Bd, 2));
+            createElement("\tSupremum: "    + Disi.supremum(Ad, Bd));
+            createElement("\tMinkowski r=infinity: "+ Disi.minkowski(Ad, Bd, Infinity));
+            createElement("");
+            createElement("Special:");
+            createElement("\tChi-Squared: "   + Disi.chi(Ad, Bd));
+            createElement("\tPerson: "   + Disi.person(Ad, Bd));
+            createElement("\n\n");
+
+            let As = similarity[i];
+            let Bs = similarity[j];
+            createElement("-----------------------------------");
+            createElement("Vector " + i + ": "    + JSON.stringify(As));
+            createElement("");
+            createElement("Vector " + j + ": "    + JSON.stringify(Bs));
+            createElement("-----------------------------------");
+            createElement("");
+            createElement("Similarity:");
+            createElement("\tSimple Matching: "   + Disi.smc(As, Bs));
+            createElement("\tJaccard Coefficients: "   + Disi.jc(As, Bs));
+            createElement("\tExtended Jaccard Coefficients: "   + Disi.ejc(As, Bs));
+            createElement("Special:");
+            createElement("\tChi-Squared: "   + Disi.chi(As, Bs));
+            createElement("\tPerson: "   + Disi.person(As, Bs));
+            createElement("\n\n");
+        }
+    }
+    </script>
 </body>
 </html>

@@ -1,23 +1,56 @@
-# MecuUtils
-Utility for MeCu
+# DiSi
+Library of Distance and Similarity (and more) functions.
 ***
 
 ## How to use
 Require this package via npm, then:
 
-```javascript
-const MecuUtils = require('mecu-utils');
-```
+1. In a node application:
+    ```javascript
+    const Disi = require('disi');
 
-**IMPORTANT**: This package uses [Destructuring assignments](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment). These are supported out of the box only starting with Node V6. You can check compatibility [through this table](https://kangax.github.io/compat-table/es6/#test-destructuring).
+    let v = [1,2];
+    let u = [3,2];
+    let euclidian = Disi.euclidian(u, v));
+    console.log(euclidian);
+    ```
 
-After that you can use the following functions:
+2. For use in web pages
+    ```html
+    <script src="path/to/build/disi.js"></script>
 
-### Parse text file entry.
-```javascript
-const fs = require('fs');
+    <script>
+        let v = [1,2];
+        let u = [3,2];
+        let euclidian = Disi.euclidian(u, v));
+        alert(euclidian);
+    </script>
+    ```
 
-fs.readFile(someFile.path, 'utf8', function (error, data) {
-  var entries = MecuUtils.parse(data);
-}
-```
+You can refer to the `examples` folder for complete examples.
+
+### Important:
+Some functionality is still being implemented or not existent at all, in the following sections, the functions preceded by a [WIP] are either not fully or not implemented at all.
+
+
+### Distance functions:
+
+- Euclidian --> `Disi.euclidian(vector1, vector2)`
+- Manhattan --> `Disi.manhattan(vector1, vector2)`
+- Supremum --> `Disi.supremum(vector1, vector2)`
+- Minkowski --> `Disi.minkowski(vector1, vector2, rank)`
+- Minkowski --> `Disi.minkowski(vector1, vector2, rank)`
+- [WIP] Mahalanobis --> `Disi.mahalanobis(vector1, vector2, covariance)`
+
+### Similarity functions:
+
+- Simple Matching Coefficients --> `Disi.sm(vector1, vector2)`
+- Jaccard Coefficients --> `Disi.jc(vector1, vector2)`
+- [WIP] Extended Jaccard Coefficients --> `Disi.ejc(vector1, vector2)`
+- [WIP] Cosine similarity --> `Disi.cosine(vector1, vector2)`
+
+### Additionally:
+
+- [WIP] Chi-Square test --> `Disi.chi(vector1, vector2)`
+- [WIP] Person correlation --> `Disi.person(vector1, vector2)`
+- [WIP] Covariance --> `Disi.covariance([vector1, vector2, vector3, ...])`
