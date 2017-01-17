@@ -39,7 +39,6 @@ Some functionality is still being implemented or not existent at all, in the fol
 - Manhattan --> `Disi.manhattan(vector1, vector2)`
 - Supremum --> `Disi.supremum(vector1, vector2)`
 - Minkowski --> `Disi.minkowski(vector1, vector2, rank)`
-- Minkowski --> `Disi.minkowski(vector1, vector2, rank)`
 - [WIP] Mahalanobis --> `Disi.mahalanobis(vector1, vector2, covariance)`
 
 ### Similarity functions:

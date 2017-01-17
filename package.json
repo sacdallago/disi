@@ -1,7 +1,7 @@
 {
-    "name": "DiSi",
+    "name": "disi",
     "description": "A collection of distance and similarity metrics written in pure JS",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "homepage": "https://github.com/sacdallago/disi",
     "repository": {
         "type": "git",
@@ -26,7 +26,17 @@
         "person",
         "euclidian",
         "manhattan",
-        "supermis"
+        "supermis",
+        "correlation",
+        "cosine",
+        "mahalanobis",
+        "correlation",
+        "cosine",
+        "minkowski",
+        "chi-square",
+        "jaccard coefficients",
+        "simple matching",
+        "Covariance"
     ],
     "main": "build/disi.js",
     "scripts": {
