@@ -1,7 +1,7 @@
 const Disi = require('../build/disi.js');
 
 let n_of_vectors = 2;
-let vector_length = 3;
+let vector_length = 10;
 
 let distance = [];
 let similarity = [];

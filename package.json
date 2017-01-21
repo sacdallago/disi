@@ -32,6 +32,7 @@
         "correlation",
         "cosine",
         "mahalanobis",
+        "dice",
         "correlation",
         "cosine",
         "minkowski",

@@ -66,7 +66,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 
-
 	/**
 	 * Check that two vectors have equal length.
 	 *
@@ -310,7 +309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
-	     * Tanimoto coefficient ( Same as Extended Jaccard coefficient)
+	     * Tanimoto coefficient (Same as Extended Jaccard coefficient)
 	     *
 	     * @param A - A vector of the form [1,2.3,4]
 	     * @param B - A vector of the form [1,2.3,4]
@@ -350,7 +349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param B - A vector of the form [1,2.3,4]
 	     * @returns {number}
 	     */
-	    // TODO - should be in [-1,1] boundary but occasionally spawns high numbers --> Why?
+	    // TODO - covariance is not right
 	    static person(A,B){
 	        checkLength(A,B);
 
@@ -362,9 +361,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        let stdA = Math.std(A);
 	        let stdB = Math.std(B);
 
+	        // THIS is not right
 	        for(let i=0; i<A.length; i++){
-	            nom += (A[i] - avgA) * (B[i] - avgB);
+	            for(let j=0; j<B.length; j++){
+	                nom += (A[i] - avgA) * (B[j] - avgB);
+	            }
 	        }
+
+	        nom /= A.length;
+	        // UNTIL here
 
 	        return nom / (stdA * stdB);
 	    }
@@ -378,19 +383,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for(let i=0; i<A.length; i++){
 	            for(let j=0; j<A.length; j++){
 	                let o = 0.0;
-	                let e = 0.0;
+
+	                let eA = 0.0;
+	                let eB = 0.0;
 
 	                for(let k = 0; k<A.length; k++){
 	                    if(A[i] === A[k] && B[j] === B[k]){
 	                        o++;
-	                    } else if(A[i] === A[k] || B[j] === B[k]){
-	                        e++;
+	                    }
+	                    if(A[i] === A[k]){
+	                        eA++;
+	                    }
+	                    if(B[j] === B[k]){
+	                        eB++;
 	                    }
 	                }
 
-	                e = e/A.length;
+	                let e = (eA * eB) / A.length;
 
-	                sum += Math.pow(o-e,2) / e;
+	                sum += Math.pow(o - e, 2) / e;
 	            }
 	        }
 
