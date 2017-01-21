@@ -33,7 +33,7 @@ You can refer to the `examples` folder for complete examples.
 Some functionality is still being implemented or not existent at all, in the following sections, the functions preceded by a [WIP] are either not fully or not implemented at all.
 
 
-### Distance functions:
+### Distance measures:
 
 - Euclidian --> `Disi.euclidian(vector1, vector2)`
 - Manhattan --> `Disi.manhattan(vector1, vector2)`
@@ -41,12 +41,15 @@ Some functionality is still being implemented or not existent at all, in the fol
 - Minkowski --> `Disi.minkowski(vector1, vector2, rank)`
 - [WIP] Mahalanobis --> `Disi.mahalanobis(vector1, vector2, covariance)`
 
-### Similarity functions:
+### Similarity measures:
 
-- Simple Matching Coefficients --> `Disi.sm(vector1, vector2)`
-- Jaccard Coefficients --> `Disi.jc(vector1, vector2)`
-- [WIP] Extended Jaccard Coefficients --> `Disi.ejc(vector1, vector2)`
-- [WIP] Cosine similarity --> `Disi.cosine(vector1, vector2)`
+- Simple Matching Coefficient --> `Disi.sm(vector1, vector2)`
+- Jaccard Coefficient --> `Disi.jc(vector1, vector2)`
+- Extended Jaccard Coefficient (executes Tanimoto) --> `Disi.ejc(vector1, vector2)`
+- Tanimoto --> `Disi.tanimoto(vector1, vector2)`
+- Dice Coefficient --> `Disi.dice(vector1, vector2)`
+- Generalized Jaccard Coefficient --> `Disi.gjc(vector1, vector2)`
+- Cosine similarity --> `Disi.cosine(vector1, vector2)`
 
 ### Additionally:
 

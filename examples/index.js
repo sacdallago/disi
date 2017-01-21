@@ -1,7 +1,7 @@
 const Disi = require('../build/disi.js');
 
 let n_of_vectors = 2;
-let vector_length = 10;
+let vector_length = 3;
 
 let distance = [];
 let similarity = [];
@@ -37,10 +37,14 @@ for(let i=0; i<n_of_vectors; i++){
         console.log("\tMinkowski r=2: "+ Disi.minkowski(Ad, Bd, 2));
         console.log("\tSupremum: "    + Disi.supremum(Ad, Bd));
         console.log("\tMinkowski r=infinity: "+ Disi.minkowski(Ad, Bd, Infinity));
-        console.log();
+        console.log("Similarity:");
+        console.log("\tExtended Jaccard Coefficient: "   + Disi.ejc(Ad, Bd));
+        console.log("\tDice Coefficient: "   + Disi.dice(Ad, Bd));
+        console.log("\tCosine similarity: "   + Disi.cosine(Ad, Bd));
         console.log("Special:");
         console.log("\tChi-Squared: "   + Disi.chi(Ad, Bd));
         console.log("\tPerson: "   + Disi.person(Ad, Bd));
+        console.log("\tCosine: "   + Disi.cosine(Ad, Bd));
         console.log("\n\n");
 
         let As = similarity[i];
@@ -53,11 +57,7 @@ for(let i=0; i<n_of_vectors; i++){
         console.log();
         console.log("Similarity:");
         console.log("\tSimple Matching: "   + Disi.smc(As, Bs));
-        console.log("\tJaccard Coefficients: "   + Disi.jc(As, Bs));
-        console.log("\tExtended Jaccard Coefficients: "   + Disi.ejc(As, Bs));
-        console.log("Special:");
-        console.log("\tChi-Squared: "   + Disi.chi(As, Bs));
-        console.log("\tPerson: "   + Disi.person(As, Bs));
+        console.log("\tJaccard Coefficient: "   + Disi.jc(As, Bs));
         console.log("\n\n");
     }
 }
